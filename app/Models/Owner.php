@@ -43,4 +43,15 @@ class Owner extends Model
 
         return "Yes we have {$number} bananas";
     }
+
+    public static function emailExists($email)
+    {
+        $dbEmails = Owner::where('email','=',$email)->get();
+        
+        if ($dbEmails->count() === 0){
+            return true;
+        } else {
+            return false;
+        }
+    }
 }
