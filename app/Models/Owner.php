@@ -49,9 +49,9 @@ class Owner extends Model
         $dbEmails = Owner::where('email','=',$email)->get();
         
         if ($dbEmails->count() === 0){
-            return true;
-        } else {
             return false;
+        } else {
+            return true;
         }
     }
 }
