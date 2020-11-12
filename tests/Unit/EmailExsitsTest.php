@@ -8,7 +8,7 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 
 use App\Models\Owner;
 
-class OwnerDatabaseTest extends TestCase
+class EmailExsitsTest extends TestCase
 {
     /**
      * A basic unit test example.
@@ -18,7 +18,7 @@ class OwnerDatabaseTest extends TestCase
 
     use RefreshDatabase;
 
-    public function testDatabase()
+    public function testEmailExists()
     {
         Owner::create([
             'first_name' => 'Jacques',
@@ -31,8 +31,9 @@ class OwnerDatabaseTest extends TestCase
 
         $ownerFromDB = Owner::first();
 
-        $this->assertSame('Jacques', $ownerFromDB->first_name);
-        
-        $this->assertSame('jacquescoetzee91@gmail.com', $ownerFromDB->email);
+        $this->assertTrue($ownerFromDB->emailExists('jacquescoetzee91@gmail.com'));
+
+        $this->assertFalse($ownerFromDB->emailExists('made-up@gmail.com'));
+
     }
 }
