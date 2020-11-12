@@ -9,15 +9,14 @@
   </head>
   <body>
     <div class="container">
-        <nav class="mt-4 navbar navbar-light bg-light">
-            <a class="navbar-brand" href="/">My Amazing Blog</a>
-        </nav>
+        @include("_partials/nav")
 
         <main class="mt-4">
           @yield("content")
         </main>
+
         <footer class="mt-4">
-            <p>&copy;Fake 2020</p>
+          <p>&copy;Fake 2020</p>
         </footer>
     </div>
   </body>
