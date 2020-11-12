@@ -31,9 +31,9 @@ class EmailExsitsTest extends TestCase
 
         $ownerFromDB = Owner::first();
 
-        $this->assertTrue($ownerFromDB->emailExists('jacquescoetzee91@gmail.com'));
+        $this->assertTrue(Owner::emailExists('jacquescoetzee91@gmail.com'));
 
-        $this->assertFalse($ownerFromDB->emailExists('made-up@gmail.com'));
+        $this->assertFalse(Owner::emailExists('made-up@gmail.com'));
 
     }
 }

@@ -12,25 +12,6 @@ class Owner extends Model
 
     protected $fillable = ['first_name','last_name','telephone','email','address_1','postcode'];
 
-    public function fullName()
-    {
-        return "{$this->first_name} {$this->last_name}";
-    }
-
-    public function fullAddress()
-    {
-        return "{$this->address_1}\n{$this->address_2}\n{$this->town}\n{$this->postcode}";
-    }
-
-    public function formattedPhoneNumber()
-    {
-        $prefix = Str::substr($this->telephone,0,4);
-        $area = Str::substr($this->telephone,4,3);
-        $unique = Str::substr($this->telephone,7);
-
-        return "{$prefix} {$area} {$unique}";
-    }
-
     public static function haveWeBananas($number)
     {
         if ($number === 0) {
@@ -53,5 +34,35 @@ class Owner extends Model
         } else {
             return true;
         }
+    }
+
+    public static function validPhoneNumber($number)
+    {
+        if(strlen($number)<11 || strlen($number)>14){
+            return false;
+        } 
+        else if(\preg_match("/[A-z]/",$number)){
+            return false;
+        }
+        return true;
+    }
+
+    public function fullName()
+    {
+        return "{$this->first_name} {$this->last_name}";
+    }
+
+    public function fullAddress()
+    {
+        return "{$this->address_1}\n{$this->address_2}\n{$this->town}\n{$this->postcode}";
+    }
+
+    public function formattedPhoneNumber()
+    {
+        $prefix = Str::substr($this->telephone,0,4);
+        $area = Str::substr($this->telephone,4,3);
+        $unique = Str::substr($this->telephone,7);
+
+        return "{$prefix} {$area} {$unique}";
     }
 }
