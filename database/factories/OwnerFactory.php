@@ -27,7 +27,7 @@ class OwnerFactory extends Factory
             'telephone' => $this->faker->e164PhoneNumber,
             'email' => $this->faker->email,
             'address_1' => $this->faker->streetAddress,
-            'address_2' => $this->faker->state,
+            'address_2' => $this->faker->county,
             'town' => $this->faker->city,
             'postcode' => $this->faker->postcode
         ];
