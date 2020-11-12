@@ -9,15 +9,14 @@
   </head>
   <body>
     <div class="container">
-        @include("_partials/nav")
+      @include("_partials/nav")
 
-        <main class="mt-4">
-          @yield("content")
-        </main>
+      <main class="mt-4">
+        @yield("content")
+      </main>
 
-        <footer class="mt-4">
-          <p>&copy;Fake 2020</p>
-        </footer>
+      @include("_partials/footer")
+
     </div>
   </body>
 </html>
