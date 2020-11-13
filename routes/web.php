@@ -15,4 +15,4 @@ use App\Http\Controllers\Owners;
 |
 */
 
-Route::get('/', [Owners::class, "index"]);
+Route::get('/owners', [Owners::class, "index"]);
