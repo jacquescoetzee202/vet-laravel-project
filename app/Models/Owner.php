@@ -63,6 +63,6 @@ class Owner extends Model
         $area = Str::substr($this->telephone,4,3);
         $unique = Str::substr($this->telephone,7);
 
-        return "{$prefix} {$area} {$unique}";
+        return "{$prefix}, {$area}, {$unique}";
     }
 }

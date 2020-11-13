@@ -14,4 +14,11 @@ class Owners extends Controller
             "owners" => Owner::all()
         ]);
     }
+
+    public function show(Owner $owner)
+    {
+        return view("owners/show", [
+            "owner" => $owner
+        ]);
+    }
 }
