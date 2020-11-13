@@ -31,9 +31,5 @@ class ViewsTest extends TestCase
         $this->get('/')->assertViewIs("welcome");
         $this->get('/owners')->assertViewIs("owners.index");
         $this->get('/owners/1')->assertViewIs("owners.show");
-
-        //$this->get('/owners')->assertStatus(200);
-        //$this->get('/owners/1')->assertStatus(200);
-        //$this->get('/owners/2')->assertStatus(404);
     }
 }
