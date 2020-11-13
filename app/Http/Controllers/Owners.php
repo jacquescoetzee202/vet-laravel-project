@@ -10,7 +10,7 @@ class Owners extends Controller
 {
     public function index()
     {
-        return view("welcome", [
+        return view("owners/index", [
             "owners" => Owner::all()
         ]);
     }

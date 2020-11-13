@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\Owners;
+use App\Http\Controllers\Home;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,5 +15,7 @@ use App\Http\Controllers\Owners;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+Route::get('/', [Home::class, "index"]);
 
 Route::get('/owners', [Owners::class, "index"]);
