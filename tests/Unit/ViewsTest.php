@@ -8,17 +8,16 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 
 use App\Models\Owner;
 
-class TelephoneLengthTest extends TestCase
+class ViewsTest extends TestCase
 {
     /**
      * A basic unit test example.
      *
      * @return void
      */
-
     use RefreshDatabase;
-     
-    public function testTelephoneLength()
+
+    public function testViews()
     {
         Owner::create([
             'first_name' => 'Jacques',
@@ -28,11 +27,13 @@ class TelephoneLengthTest extends TestCase
             'address_1' => '7 Chalks Road',
             'postcode' => 'BS5 9EN'
         ]);
-        // not behaving as expected !! had to update input to match test of 14 strlen, varchar(14) not truncating the telephone input.
-        $firstOwner = Owner::first();
-        $firstOwner->telephone = "07532390563234";
-        $firstOwner->save();
 
-        $this->assertSame(strlen(Owner::first()->telephone),14);
+        $this->get('/')->assertViewIs("welcome");
+        $this->get('/owners')->assertViewIs("owners.index");
+        $this->get('/owners/1')->assertViewIs("owners.show");
+
+        //$this->get('/owners')->assertStatus(200);
+        //$this->get('/owners/1')->assertStatus(200);
+        //$this->get('/owners/2')->assertStatus(404);
     }
 }
