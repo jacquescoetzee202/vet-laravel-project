@@ -10,7 +10,7 @@ class Owner extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['first_name','last_name','telephone','email','address_1','postcode'];
+    protected $fillable = ['first_name','last_name','telephone','email','address_1','postcode','address_2','town'];
 
     public static function haveWeBananas($number)
     {
