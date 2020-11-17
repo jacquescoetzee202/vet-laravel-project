@@ -18,9 +18,9 @@ class CreateAnimalsTable extends Migration
             $table->string('name',100);
             $table->string('type',100);
             $table->date('date_of_birth');
-            $table->float('weigth',5,2);
+            $table->float('weight',5,2);
             $table->float('height',5,2);
-            $table->enum('biteyness', ['1', '2', '3', '4', '5']);
+            $table->enum('biteyness', [1, 2, 3, 4, 5]);
             $table->timestamps();
 
             $table->foreignId("owner_id")

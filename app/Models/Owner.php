@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Animal;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
@@ -11,6 +12,12 @@ class Owner extends Model
     use HasFactory;
 
     protected $fillable = ['first_name','last_name','telephone','email','address_1','postcode','address_2','town'];
+
+    public function animals()
+    {
+        // applying a hasMany relationship method as owners can have many pets
+        return $this->hasMany(Animal::class);
+    }
 
     public static function haveWeBananas($number)
     {
