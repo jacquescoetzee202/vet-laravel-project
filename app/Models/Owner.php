@@ -54,7 +54,7 @@ class Owner extends Model
 
     public function fullAddress()
     {
-        return "{$this->address_1}\n{$this->address_2}\n{$this->town}\n{$this->postcode}";
+        return "{$this->address_1}, {$this->address_2}, {$this->town}, {$this->postcode}";
     }
 
     public function formattedPhoneNumber()
@@ -63,6 +63,6 @@ class Owner extends Model
         $area = Str::substr($this->telephone,4,3);
         $unique = Str::substr($this->telephone,7);
 
-        return "{$prefix}, {$area}, {$unique}";
+        return "{$prefix} {$area} {$unique}";
     }
 }
