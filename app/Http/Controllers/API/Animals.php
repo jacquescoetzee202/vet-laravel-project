@@ -4,10 +4,11 @@ namespace App\Http\Controllers\API;
 
 use App\Models\Owner;
 use App\Models\Animal;
-use App\Http\Requests\API\AnimalRequest;
-
 use Illuminate\Http\Request;
+
 use App\Http\Controllers\Controller;
+use App\Http\Requests\API\AnimalRequest;
+use App\Http\Resources\API\AnimalResource;
 
 class Animals extends Controller
 {
@@ -40,7 +41,7 @@ class Animals extends Controller
         // save to DB
         $animal->save();
 
-        return $animal;
+        return new AnimalResource($animal);
     }
 
     /**
@@ -53,7 +54,7 @@ class Animals extends Controller
     public function show(Owner $owner, Animal $animal)
     {
         // show specific animal based on ID
-        return $animal;
+        return new AnimalResource($animal);
     }
 
     /**
@@ -73,7 +74,7 @@ class Animals extends Controller
         //use the setTreatments method
         $animal->setTreatments($request->get("treatments"));
 
-        return $animal;
+        return new AnimalResource($animal);
 
     }
 
