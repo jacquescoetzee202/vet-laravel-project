@@ -43,11 +43,7 @@ class CreateTreatmentsTable extends Migration
      */
     public function down()
     {
-        Schema::table('animal_treatment', function (Blueprint $table) {
-            $table->dropForeign(["animal_id"]);
-            $table->dropForeign(["treatment_id"]);
-        });
-        Schema::dropIfExists('treatments');
         Schema::dropIfExists('animal_treatment');
+        Schema::dropIfExists('treatments');
     }
 }
