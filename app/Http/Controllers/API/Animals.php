@@ -26,9 +26,20 @@ class Animals extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Owner $owner, Animal $animal)
+    public function store(Request $request,Owner $owner)
     {
-        //
+        $data = $request->all();
+
+        // make a new animal with data
+        $animal = new Animal($data);
+
+        // assocaite the animal with an owner
+        $animal->owner()->associate($owner);
+
+        // save to DB
+        $animal->save();
+
+        return $animal;
     }
 
     /**
@@ -51,9 +62,15 @@ class Animals extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Owner $owner, Animal $animal)
     {
-        //
+        $data = $request->all();
+
+        //update model with data and save to database
+        $animal->update($data);
+
+        return $animal;
+
     }
 
     /**
@@ -62,8 +79,10 @@ class Animals extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Owner $owner, Animal $animal)
     {
-        //
+        $animal->delete();
+
+        return response(null, 204);
     }
 }

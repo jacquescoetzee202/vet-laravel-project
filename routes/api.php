@@ -42,7 +42,8 @@ Route::group(["prefix" => "owners"], function() {
             Route::group(["prefix" => "{animal}"], function(){
                 // GET homestead.test/api/owners/animals/{animal} route that shows a specific animal
                 Route::get("",[Animals::class, "show"]);
-                
+                Route::delete("",[Animals::class, "destroy"]);
+                Route::put("",[Animals::class, "update"]);
             });
         });
     });
@@ -54,7 +55,6 @@ Route::group(["prefix" => "owners"], function() {
 /*
 
 Add a GET /api/owners/{owner}/animals/{animal} route that shows a specific animal
-Add a POST /api/owners/{owner}/animals route so that you can add an animal to an owner
-Add a PUT /api/owners/{owner}/animals/{animal} route so that you can update an animal
-Add a DELETE /api/owners/{owner}/animals/{animal} route so that you can delete an animal
+
+
 */

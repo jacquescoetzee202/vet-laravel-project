@@ -22,3 +22,6 @@ class Animal extends Model
         return $this->biteyness > 2;
     }
 }
+
+
+
