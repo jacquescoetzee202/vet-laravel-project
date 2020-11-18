@@ -31,7 +31,7 @@ class Animals extends Controller
         $data = $request->all();
 
         // make a new animal with data
-        $animal = new Animal($data);
+        $animal = Animal::create($data)->setTreatments($request->get("treatments"));
 
         // assocaite the animal with an owner
         $animal->owner()->associate($owner);
@@ -68,6 +68,9 @@ class Animals extends Controller
 
         //update model with data and save to database
         $animal->update($data);
+
+        //use the setTreatments method
+        $animal->setTreatments($request->get("treatments"));
 
         return $animal;
 
