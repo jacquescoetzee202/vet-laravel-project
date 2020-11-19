@@ -17,6 +17,12 @@ class CodeCracker
         return $this->keys;
     }
 
+    private function ascii($char)
+    {
+        $index = array_search($char, $this->keys);
+        $ascii = $index += 97;
+    } 
+
     public function decrypt($string)
     {
         $result = '';
@@ -24,9 +30,7 @@ class CodeCracker
 
         foreach($charArr as $char){
             if($char !== " "){
-                $index = array_search($char, $this->keys);
-                $ascii = $index += 97;
-                $result .= chr($ascii);
+                $result .= chr($this->ascii($char));
             } else {
                 $result .= " ";
             }

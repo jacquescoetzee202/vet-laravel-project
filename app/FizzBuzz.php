@@ -4,18 +4,22 @@ namespace App;
 
 class FizzBuzz
 {
+    private $dict = [
+        3 => "Fizz",
+        5 => "Buzz",
+        7 => "Rarr"
+    ];
+
     public function forNumber(int $num) : string
     {
         $result = '';
-        if($num % 3 === 0){
-            $result .= "Fizz";
+        
+        foreach($this->dict as $key => $string){
+            if($num % $key === 0){
+                $result .= $string;
+            }
         }
-        if($num % 5 === 0){
-            $result .= "Buzz";
-        }
-        if($num % 7 === 0){
-            $result .= "Rarr";
-        }
+        
         return $result === "" ? strval($num) : $result;
     }
 }
