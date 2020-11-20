@@ -7,8 +7,9 @@ use App\Models\Animal;
 use Illuminate\Http\Request;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\API\AnimalRequest;
 use App\Http\Resources\API\AnimalResource;
+use App\Http\Requests\API\AnimalDelRequest;
+use App\Http\Requests\API\AnimalSecureRequest;
 
 class Animals extends Controller
 {
@@ -28,7 +29,7 @@ class Animals extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(AnimalRequest $request,Owner $owner)
+    public function store(AnimalSecureRequest $request,Owner $owner)
     {
         $data = $request->all();
 
@@ -67,7 +68,7 @@ class Animals extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(AnimalRequest $request, Owner $owner, Animal $animal)
+    public function update(AnimalSecureRequest $request, Owner $owner, Animal $animal)
     {
         $data = $request->all();
 
@@ -87,7 +88,7 @@ class Animals extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Owner $owner, Animal $animal)
+    public function destroy(AnimalDelRequest $request, Owner $owner, Animal $animal)
     {
         $animal->delete();
 

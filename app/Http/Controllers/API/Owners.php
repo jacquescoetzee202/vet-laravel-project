@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers\API;
 
-use App\Http\Controllers\Controller;
-use App\Http\Requests\API\OwnerRequest;
-use App\Http\Resources\API\OwnerResource;
-
 use App\Models\Owner;
+use App\Http\Controllers\Controller;
+use App\Http\Requests\API\OwnerSecureRequest;
+
+use App\Http\Resources\API\OwnerResource;
+use App\Http\Requests\API\OwnerDelRequest;
 
 class Owners extends Controller
 {
@@ -23,10 +24,10 @@ class Owners extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  App\Http\Requests\API\OwnerRequest  $request
+     * @param  App\Http\Requests\API\OwnerSecureRequest  $request
      * @return APP\Http\Resources\API\OwnerResource
      */
-    public function store(OwnerRequest $request)
+    public function store(OwnerSecureRequest $request)
     {
         // get all the request data
         // returns an array of all the data the user sent
@@ -57,11 +58,11 @@ class Owners extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  App\Http\Requests\API\OwnerRequest  $request
+     * @param  App\Http\Requests\API\OwnerSecureRequest  $request
      * @param  int  $id
      * @return APP\Http\Resources\API\OwnerResource
      */
-    public function update(OwnerRequest $request, Owner $owner)
+    public function update(OwnerSecureRequest $request, Owner $owner)
     {
         // get the request data
         $data = $request->all();
@@ -80,7 +81,7 @@ class Owners extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Owner $owner)
+    public function destroy(OwnerDelRequest $request, Owner $owner)
     {
         $owner->delete();
 
