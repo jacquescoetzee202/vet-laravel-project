@@ -20,7 +20,10 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::group(["prefix" => "owners"], function() {
+Route::group([
+    "prefix" => "owners",
+    "middleware" => ["auth:api"],
+    ], function() {
     // GET homestead.test/api/owners show all owners
     Route::get("",[Owners::class, "index"]);
     //POST homestead.test/api/owners create an owner

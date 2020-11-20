@@ -20,7 +20,7 @@ class CodeCracker
     private function ascii($char)
     {
         $index = array_search($char, $this->keys);
-        $ascii = $index += 97;
+        return $index += 97;
     } 
 
     public function decrypt($string)
