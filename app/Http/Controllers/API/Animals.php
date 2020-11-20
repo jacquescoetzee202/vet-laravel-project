@@ -32,14 +32,17 @@ class Animals extends Controller
     {
         $data = $request->all();
 
-        // make a new animal with data
-        $animal = Animal::create($data)->setTreatments($request->get("treatments"));
-
+        // make a new animal
+        $animal = new Animal();
+        // fill it with the data
+        $animal->fill($data);
         // assocaite the animal with an owner
         $animal->owner()->associate($owner);
-
-        // save to DB
+        //save to database
         $animal->save();
+
+        //set the a treatments using Animal model method
+        $animal->setTreatments($request->get("treatments"));
 
         return new AnimalResource($animal);
     }
